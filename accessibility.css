@@ -1,0 +1,47 @@
+/* Additions to the original compiled design. */
+button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+button > svg { width: 100%; height: 100%; }
+:focus-visible { outline: 3px solid #176cbb; outline-offset: 5px; }
+.overlay-menu :focus-visible { outline-color: white; }
+.skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 2000;
+    padding: 12px;
+    background: white;
+    color: #111;
+    transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+.overlay-menu { visibility: hidden; }
+.open .overlay-menu { visibility: visible; overflow-y: auto; }
+.modal-article.active { z-index: 1000; }
+.slider__item[aria-hidden="true"] { visibility: hidden; }
+.slider__controls-btn { width: 25px; height: 25px; }
+html { scroll-behavior: smooth; }
+html:not(.animations-enabled) [data-aos] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+}
+html:not(.animations-enabled) [data-aos^="artical-title-bg-show"] { width: auto; }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+        scroll-behavior: auto !important;
+    }
+    .video-bg video { visibility: hidden; }
+}
